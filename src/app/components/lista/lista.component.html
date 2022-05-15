@@ -1,0 +1,19 @@
+<div class="contenedor d-flex flex-column">
+    <h1>Lista alumnos</h1>
+    <ul>
+        <li *ngFor="let item of alumnos">
+            <p [ngClass]="item.nota > 5 ? 'aprobado' : 'reprobado'">{{ item.nombre }}
+                {{ item.apellido | uppercase}}
+                {{ item.nota }}</p>
+        </li>
+    </ul>
+    <h1>Listado de alumnos trabajando</h1>
+
+    <ul *ngIf="showme">
+        <li *ngFor="let item of alumnos">
+            <p *ngIf="item.trabaja === 'si'" [ngClass]="item.lenguaje == 'angular' ? 'angular' : 'otro'">{{ item.nombre
+                }} trabaja con el lenguaje {{ item.lenguaje }}</p>
+        </li>
+    </ul>
+    <button class="btn btn-primary" (click)="mostrar()" (click)="showme = !showme">{{ boton | uppercase}}</button>
+</div>
